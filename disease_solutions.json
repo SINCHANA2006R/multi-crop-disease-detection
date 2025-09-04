@@ -1,0 +1,22 @@
+import json
+
+# Load the classes from your existing file
+with open("class_indices.json", "r") as f:
+    class_indices = json.load(f)
+
+# Reverse mapping: index -> class_name
+idx_to_class = {v: k for k, v in class_indices.items()}
+
+# Create a solutions dictionary (temporary placeholder text for each class)
+disease_solutions = {}
+for _, class_name in idx_to_class.items():
+    disease_solutions[class_name] = {
+        "organic": f"Organic solution for {class_name} (you can edit later)",
+        "inorganic": f"Inorganic solution for {class_name} (you can edit later)"
+    }
+
+# Save it as a new file
+with open("disease_solutions.json", "w") as f:
+    json.dump(disease_solutions, f, indent=4)
+
+print("✅ Created disease_solutions.json with all classes!")
